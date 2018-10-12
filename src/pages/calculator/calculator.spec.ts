@@ -3,7 +3,7 @@ import { TestBed, async, inject } from "@angular/core/testing";
 import { IonicModule, Platform, NavController, NavParams } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
-import { PlatformMock, StatusBarMock, SplashScreenMock, NavControllerMock, NavParamsMock, CalculatorPageMock } from "ionic-mocks";
+import { PlatformMock, StatusBarMock, SplashScreenMock, NavControllerMock, NavParamsMock } from "ionic-mocks";
 
 describe("CalculatorPage", () => {
   let calculatorpage;
@@ -21,7 +21,7 @@ describe("CalculatorPage", () => {
         { provide: SplashScreen, useFactory: () => SplashScreenMock.instance() },
         { provide: NavController, useFactory: () => NavControllerMock.instance() },
         { provide: NavParams, useFactory: () => NavParamsMock.instance() },
-        { provide: CalculatorPage, useFactory: () => CalculatorPageMock.instance() }
+        // { provide: CalculatorPage, useFactory: () => CalculatorPageMock.instance() }
 
 
     ]
@@ -46,18 +46,17 @@ describe("CalculatorPage", () => {
         expect(calculatorpage.calculateBMI).toHaveBeenCalled();
     });
 
-    it("calculate function should call calculator calculateBMI function", inject(
-        [CalculatorPage],
-        person => {
-            calculatorpage.user = { weight: 80, height: 180 };
-            spyOn(person, "calculateBMI").and.returnValue("You are Normal");
+    it("calculate function should call calculator calculateBMI function", () => {
+            calculatorpage.calculateBMI = { weight: 80, height: 180 };
+            spyOn(calculatorpage, "calculateBMI").and.returnValue("You are Normal");
 
             calculatorpage.calculateBMI();
 
-            expect(person.calculateBMI).toHaveBeenCalled();
-            expect(person.calculateBMI).toHaveBeenCalledWith(80);
-            expect(person.height).toEqual(80);
-            expect(person.weight).toEqual(180);
+            expect(calculatorpage.calculateBMI).toHaveBeenCalled();
+            expect(calculatorpage.calculateBMI.height).toEqual(180);
+            expect(calculatorpage.calculateBMI.weight).toEqual(80);
+            expect(calculatorpage.setBMIMessage.bmiMessage).toEqual("You are Normal");
+            
         }
-    ));
+    );
 });
