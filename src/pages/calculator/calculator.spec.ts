@@ -37,7 +37,7 @@ describe("CalculatorPage", () => {
   });
 
   it('should have calculate function', () => {
-    spyOn(calculatorpage, 'calculate');
+    spyOn(calculatorpage, 'calculateBMI');
 
     calculatorpage.calculateBMI()
 
