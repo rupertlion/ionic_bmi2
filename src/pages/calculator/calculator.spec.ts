@@ -7,8 +7,6 @@ import { PlatformMock, StatusBarMock, SplashScreenMock, NavControllerMock, NavPa
 
 describe("CalculatorPage", () => {
   let calculatorpage: CalculatorPage;
-  let weight: 80;
-  let height: 180;
   let fixture
 
   beforeEach(async(() => {
@@ -24,8 +22,6 @@ describe("CalculatorPage", () => {
         { provide: NavController, useFactory: () => NavControllerMock.instance() },
         { provide: NavParams, useFactory: () => NavParamsMock.instance() },
         // { provide: CalculatorPage, useFactory: () => CalculatorPageMock.instance() }
-
-
     ]
     }).compileComponents();
     }));
@@ -45,18 +41,20 @@ describe("CalculatorPage", () => {
 
         calculatorpage.calculateBMI()
 
-        expect(calculatorpage.calculateBMI).toHaveBeenCalled();
+        expect(this.calculateBMI).toHaveBeenCalled();
     });
 
     it("calculate function should call calculator calculateBMI function", () => {
-        console.log(calculatorpage)
+
+        this.weight = 80
+        this.height = 180
         
-        calculatorpage.calculateBMI();
+        this.calculateBMI();
 
         // expect(calculatorpage.calculateBMI).toHaveBeenCalled();
         // expect(calculatorpage.height).toEqual(180);
         // expect(calculatorpage.weight).toEqual(80);
-        expect(calculatorpage.bmiMessage).toEqual("You are Normal")
+        expect(this.bmiMessage).toEqual("You are Normal")
         });
 
         // it("calculate function should return correct BMI value and message", () => {
