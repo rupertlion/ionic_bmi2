@@ -48,15 +48,21 @@ describe("CalculatorPage", () => {
 
     it("calculate function should call calculator calculateBMI function", () => {
             calculatorpage.calculateBMI = { weight: 80, height: 180 };
-            spyOn(calculatorpage, "calculateBMI").and.returnValue("You are Normal");
 
             calculatorpage.calculateBMI();
 
-            expect(calculatorpage.calculateBMI).toHaveBeenCalled();
+            // expect(calculatorpage.calculateBMI).toHaveBeenCalled();
             expect(calculatorpage.calculateBMI.height).toEqual(180);
             expect(calculatorpage.calculateBMI.weight).toEqual(80);
-            expect(calculatorpage.setBMIMessage.bmiMessage).toEqual("You are Normal");
-            
-        }
-    );
+        });
+
+        it("calculate function should return correct BMI value and message", () => {
+            // calculatorpage.calculateBMI = { weight: 80, height: 180 };
+            // spyOn(calculatorpage, "calculateBMI").and.returnValue("You are Normal");
+
+            calculatorpage.calculateBMI({ weight: 80, height: 180 });
+
+            expect(calculatorpage.bmiValue).toEqual(24.69);
+            expect(calculatorpage.calculateBMI).toEqual("You are Normal");
+        });
 });
