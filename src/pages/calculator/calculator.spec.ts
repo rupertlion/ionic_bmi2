@@ -7,7 +7,7 @@ import { PlatformMock, StatusBarMock, SplashScreenMock, NavControllerMock, NavPa
 
 describe("CalculatorPage", () => {
   let calculatorpage: CalculatorPage;
-  let fixture
+  let fixture;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -45,7 +45,7 @@ describe("CalculatorPage", () => {
     });
 
     it("calculate function should call calculator calculateBMI function", () => {
-
+        
         calculatorpage.weight = 80
         calculatorpage.height = 180
         spyOn(calculatorpage, "calculateBMI");
@@ -55,6 +55,6 @@ describe("CalculatorPage", () => {
         expect(calculatorpage.calculateBMI).toHaveBeenCalled();
         expect(calculatorpage.height).toEqual(180);
         expect(calculatorpage.weight).toEqual(80);
-        // expect(calculatorpage.calculateBMI).toEqual("Normal")
+        expect(calculatorpage.calculateBMI).toContain("Normal")
         });
 });
