@@ -46,16 +46,15 @@ describe("CalculatorPage", () => {
 
     it("calculate function should call calculator calculateBMI function", () => {
         
-        spyOn(calculatorpage, "calculateBMI");
-        
-        calculatorpage.calculateBMI();
-
         calculatorpage.weight = 80
         calculatorpage.height = 180
+        spyOn(calculatorpage, "calculateBMI").and.returnValue("Normal");
+
+        calculatorpage.calculateBMI();
 
         expect(calculatorpage.calculateBMI).toHaveBeenCalled();
         expect(calculatorpage.height).toEqual(180);
         expect(calculatorpage.weight).toEqual(80);
-        expect(calculatorpage.calculateBMI).toContain("Normal")
+        expect(calculatorpage.calculateBMI).toHaveBeenCalledWith()
         });
 });
