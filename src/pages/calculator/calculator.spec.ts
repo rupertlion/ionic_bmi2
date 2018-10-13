@@ -48,7 +48,7 @@ describe("CalculatorPage", () => {
 
         calculatorpage.weight = 80
         calculatorpage.height = 180
-        spyOn(calculatorpage, "calculateBMI").and.returnValue("Normal");
+        spyOn(calculatorpage, "calculateBMI");
         
         calculatorpage.calculateBMI();
 
