@@ -58,4 +58,20 @@ describe("CalculatorPage", () => {
             expect(calculatorpage.calculateBMI).toHaveBeenCalledWith(24.69)
         }
     ));
+
+    it("calculate function should return setBMImessage function", () => inject(
+        [CalculatorPage],
+        inputs => {        
+            calculatorpage.weight = 80
+            calculatorpage.height = 180
+            spyOn(inputs, "setBMIMessage").and.returnValue(24.69);
+
+            calculatorpage.setBMIMessage();
+
+            expect(calculatorpage.setBMIMessage).toHaveBeenCalled();
+            expect(calculatorpage.height).toEqual(180);
+            expect(calculatorpage.weight).toEqual(80);
+            expect(calculatorpage.setBMIMessage).toHaveBeenCalledWith(24.69)
+        }
+    ));
 });
