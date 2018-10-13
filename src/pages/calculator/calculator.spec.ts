@@ -40,3 +40,4 @@ describe("CalculatorPage", () => {
         expect(calculatorPage.calculateBMI()).toBeDefined();
         expect(calculatorPage.calculateBMI()).toEqual("Obese");
     });
+});
