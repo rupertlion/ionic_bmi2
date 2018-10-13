@@ -26,8 +26,17 @@ export class Page {
         return element(by.tagName('span')).getText();
     }
 
-    setWeightInput() {
-        return 
+    getCardContent() {
+        return element(by.tagName('ion-car-content')).getText();
+    }
+
+    setInputs() {
+        element(by.id('lbl-0')).sendKeys(80);
+        element(by.id('lbl-1')).sendKeys(180);
+    }
+
+    clickCalculate() {
+        element(by.tagName('span')).click();
     }
     
 }

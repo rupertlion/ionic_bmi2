@@ -36,21 +36,30 @@ describe('App', () => {
             expect(calcbutton).toEqual('Calculator');
             });
         });
-    })
 
-    describe('inputting information and calculating returns result', () => {
+        it('should return a result on Calculate', () => {
+            page.setInputs()
+            page.clickCalculate()
 
-        beforeEach(() => {
-            page.navigateTo('/'); 
-        });
-    
-        it('should allow me to enter weight', () => {
-            element(by.id('lbl-0')).sendKeys(80);
-            expect(element(by.id('lbl-0')).toEqual(80));
-
-            // page.setWeightInput().then(weightset => {
-            //     expect(weightset).toBe('80');
-            //     });
+            page.getCardContent().then(calcresult => {
+                expect(calcresult).toEqual('You are Normal');
+            });
         });
     });
+
+    // describe('inputting information and calculating returns result', () => {
+
+    //     beforeEach(() => {
+    //         page.navigateTo('/'); 
+    //     });
+    
+    //     it('should allow me to enter weight', () => {
+    //         element(by.id('lbl-0')).sendKeys(80);
+    //         expect(element(by.id('lbl-0')).toEqual(80));
+
+    //         // page.setWeightInput().then(weightset => {
+    //         //     expect(weightset).toBe('80');
+    //         //     });
+    // //     });
+    // });
 });
