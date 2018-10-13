@@ -25,4 +25,9 @@ export class Page {
     getCalcButton() {
         return element(by.tagName('span')).getText();
     }
+
+    setWeightInput() {
+        return 
+    }
+    
 }

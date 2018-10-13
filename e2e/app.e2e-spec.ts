@@ -1,4 +1,5 @@
 import { Page } from './app.po';
+import { browser, by, element } from 'protractor';
 
 describe('App', () => {
     let page: Page;
@@ -9,7 +10,7 @@ describe('App', () => {
 
     describe('default screen', () => {
         beforeEach(() => {
-        page.navigateTo('/');
+            page.navigateTo('/');
         });
 
         it('should have a title saying calculator', () => {
@@ -36,4 +37,20 @@ describe('App', () => {
             });
         });
     })
+
+    describe('inputting information and calculating returns result', () => {
+
+        beforeEach(() => {
+            page.navigateTo('/'); 
+        });
+    
+        it('should allow me to enter weight', () => {
+            element(by.id('lbl-0')).sendKeys(80);
+            expect(element(by.id('lbl-0')).toEqual(80));
+
+            // page.setWeightInput().then(weightset => {
+            //     expect(weightset).toBe('80');
+            //     });
+        });
+    });
 });
