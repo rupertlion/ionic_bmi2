@@ -48,13 +48,13 @@ describe("CalculatorPage", () => {
 
         calculatorpage.weight = 80
         calculatorpage.height = 180
-        spyOn(calculatorpage, "calculateBMI").and.returnValue("You are Normal");
+        spyOn(calculatorpage, "bmiValue").and.returnValue(24.69);
         
         calculatorpage.calculateBMI();
 
         expect(calculatorpage.calculateBMI).toHaveBeenCalled();
         expect(calculatorpage.height).toEqual(180);
         expect(calculatorpage.weight).toEqual(80);
-        expect(calculatorpage.bmiMessage).toEqual("You are Normal")
+        expect(calculatorpage.bmiValue).toEqual(24.69)
         });
 });
