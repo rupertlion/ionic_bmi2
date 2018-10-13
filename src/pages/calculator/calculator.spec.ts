@@ -74,4 +74,11 @@ describe("CalculatorPage", () => {
             expect(calculatorpage.setBMIMessage).toHaveBeenCalledWith(24.69)
         }
     ));
+
+    it('should calculate ', () => {
+        calculatorpage.weight = 80;
+        calculatorpage.height = 180;
+        let result = calculatorpage.calculateBMI();
+        expect(result).toEqual("Normal");
+    });
 });
