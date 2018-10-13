@@ -51,7 +51,7 @@ describe("CalculatorPage", () => {
             spyOn(inputs, "calculateBMI").and.returnValue("Normal");
 
             calculatorpage.calculateBMI();
-
+            fixture.detectChanges();
             expect(calculatorpage.calculateBMI).toHaveBeenCalled();
             expect(calculatorpage.height).toEqual(180);
             expect(calculatorpage.weight).toEqual(80);
@@ -67,7 +67,7 @@ describe("CalculatorPage", () => {
             spyOn(inputs, "setBMIMessage").and.returnValue(24.69);
 
             calculatorpage.setBMIMessage();
-
+            fixture.detectChanges();
             expect(calculatorpage.setBMIMessage).toHaveBeenCalled();
             expect(calculatorpage.height).toEqual(180);
             expect(calculatorpage.weight).toEqual(80);
@@ -75,10 +75,10 @@ describe("CalculatorPage", () => {
         }
     ));
 
-    it('should calculate ', () => {
-        calculatorpage.weight = 80;
-        calculatorpage.height = 180;
-        let result = calculatorpage.calculateBMI();
-        expect(result).toEqual("Normal");
-    });
+    // it('should calculate ', () => {
+    //     calculatorpage.weight = 80;
+    //     calculatorpage.height = 180;
+    //     let result = calculatorpage.calculateBMI();
+    //     expect(result).toEqual("Normal");
+    // });
 });
