@@ -29,5 +29,11 @@ describe('App', () => {
             expect(heightinput).toEqual('Height \(cm)');
             });
         });
+
+        it('should have a button labelled Calculate', () => {
+            page.getCalcButton().then(calcbutton => {
+            expect(calcbutton).toEqual('Calculator');
+            });
+        });
     })
 });

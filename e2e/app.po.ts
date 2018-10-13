@@ -21,4 +21,8 @@ export class Page {
     getHeightInput() {
         return element(by.id('lbl-1')).getText();
     }
+
+    getCalcButton() {
+        return element(by.tagName('span')).getText();
+    }
 }
