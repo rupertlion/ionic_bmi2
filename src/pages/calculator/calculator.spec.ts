@@ -75,10 +75,10 @@ describe("CalculatorPage", () => {
         }
     ));
 
-    // it('should calculate ', () => {
-    //     calculatorpage.weight = 80;
-    //     calculatorpage.height = 180;
-    //     let result = calculatorpage.calculateBMI();
-    //     expect(result).toEqual("Normal");
-    // });
+    it('should calculate ', () => {
+        calculatorpage.weight = 80;
+        calculatorpage.height = 180;
+        let result = calculatorpage.calculateBMI();
+        expect(result).toEqual("Normal");
+    });
 });
