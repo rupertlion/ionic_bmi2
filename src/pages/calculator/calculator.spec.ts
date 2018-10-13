@@ -6,7 +6,7 @@ import { SplashScreen } from "@ionic-native/splash-screen";
 import { PlatformMock, StatusBarMock, SplashScreenMock, NavControllerMock, NavParamsMock } from "ionic-mocks";
 
 describe("CalculatorPage", () => {
-  let calculatorpage: CalculatorPage;
+  let calculatorpage;
   let fixture;
 
   beforeEach(async(() => {
@@ -46,11 +46,12 @@ describe("CalculatorPage", () => {
 
     it("calculate function should call calculator calculateBMI function", () => {
         
-        calculatorpage.weight = 80
-        calculatorpage.height = 180
         spyOn(calculatorpage, "calculateBMI");
         
         calculatorpage.calculateBMI();
+
+        calculatorpage.weight = 80
+        calculatorpage.height = 180
 
         expect(calculatorpage.calculateBMI).toHaveBeenCalled();
         expect(calculatorpage.height).toEqual(180);
