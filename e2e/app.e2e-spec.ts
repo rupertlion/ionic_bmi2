@@ -13,9 +13,21 @@ describe('App', () => {
         });
 
         it('should have a title saying calculator', () => {
-        page.getPageOneTitleText().then(title => {
+            page.getPageOneTitleText().then(title => {
             expect(title).toEqual('calculator');
+            });
         });
+
+        it('should have an input labelled Weight \(kg)', () => {
+            page.getWeightInput().then(weightinput => {
+            expect(weightinput).toEqual('Weight \(kg)');
+            });
+        });
+
+        it('should have an input labelled Height \(cm)', () => {
+            page.getHeightInput().then(heightinput => {
+            expect(heightinput).toEqual('Height \(cm)');
+            });
         });
     })
 });
