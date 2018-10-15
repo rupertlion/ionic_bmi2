@@ -30,55 +30,35 @@ describe("CalculatorPage", () => {
         calculatorpage = fixture.componentInstance;
     });
 
-    it("should create the home page", () => {
-        expect(calculatorpage).toBeTruthy();
-        expect(calculatorpage instanceof CalculatorPage).toEqual(true);
-    });
-
-    it('should have calculate function', () => {
-        spyOn(calculatorpage, 'calculateBMI');
-
-        calculatorpage.calculateBMI()
-
-        expect(calculatorpage.calculateBMI).toHaveBeenCalled();
-    });
-
-    it("calculate function should call calculator calculateBMI function", () => inject(
-        [CalculatorPage],
-        inputs => {        
-            calculatorpage.weight = 80
-            calculatorpage.height = 180
-            spyOn(inputs, "calculateBMI").and.returnValue("Normal");
-
-            calculatorpage.calculateBMI();
-            fixture.detectChanges();
-            expect(calculatorpage.calculateBMI).toHaveBeenCalled();
-            expect(calculatorpage.height).toEqual(180);
-            expect(calculatorpage.weight).toEqual(80);
-            expect(calculatorpage.calculateBMI).toHaveBeenCalledWith(24.69)
-        }
-    ));
-
-    it("calculate function should return setBMImessage function", () => inject(
-        [CalculatorPage],
-        inputs => {        
-            calculatorpage.weight = 80
-            calculatorpage.height = 180
-            spyOn(inputs, "setBMIMessage").and.returnValue(24.69);
-
-            calculatorpage.setBMIMessage();
-            fixture.detectChanges();
-            expect(calculatorpage.setBMIMessage).toHaveBeenCalled();
-            expect(calculatorpage.height).toEqual(180);
-            expect(calculatorpage.weight).toEqual(80);
-            expect(calculatorpage.setBMIMessage).toHaveBeenCalledWith(24.69)
-        }
-    ));
-
-    it('should calculate ', () => {
+    it('assess should return Normal', () => {
         calculatorpage.weight = 80;
         calculatorpage.height = 180;
-        let result = calculatorpage.calculateBMI();
-        expect(result).toEqual("Normal");
+        calculatorpage.calculateBMI()
+        // expect(calculatorpage.calculateBMI).toBeDefined();
+        expect(calculatorpage.bmiMessage).toEqual("Normal");
+    });
+
+    it('assess should return Underweight', () => {
+        calculatorpage.weight = 55;
+        calculatorpage.height = 180;
+        calculatorpage.calculateBMI()
+        // expect(calculatorpage.calculateBMI).toBeDefined();
+        expect(calculatorpage.bmiMessage).toEqual("Underweight");
+    });
+
+    it('assess should return Overweight', () => {
+        calculatorpage.weight = 83;
+        calculatorpage.height = 180;
+        calculatorpage.calculateBMI()
+        // expect(calculatorpage.calculateBMI).toBeDefined();
+        expect(calculatorpage.bmiMessage).toEqual("Overweight");
+    });
+
+    it('assess should return Obese', () => {
+        calculatorpage.weight = 130;
+        calculatorpage.height = 180;
+        calculatorpage.calculateBMI()
+        // expect(calculatorpage.calculateBMI).toBeDefined();
+        expect(calculatorpage.bmiMessage).toEqual("Obese");
     });
 });
